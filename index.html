@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Angle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .angle {
+            font-size: 24px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Phone Angle</h1>
+    <div class="angle" id="alpha">Alpha: 0°</div>
+    <div class="angle" id="beta">Beta: 0°</div>
+    <div class="angle" id="gamma">Gamma: 0°</div>
+
+    <script>
+        if (window.DeviceOrientationEvent) {
+            window.addEventListener('deviceorientation', function(event) {
+                document.getElementById('alpha').textContent = `Alpha (Z-axis): ${event.alpha.toFixed(2)}°`;
+                document.getElementById('beta').textContent = `Beta (X-axis): ${event.beta.toFixed(2)}°`;
+                document.getElementById('gamma').textContent = `Gamma (Y-axis): ${event.gamma.toFixed(2)}°`;
+            }, true);
+        } else {
+            alert("Device orientation not supported on this device/browser.");
+        }
+    </script>
+</body>
+</html>
